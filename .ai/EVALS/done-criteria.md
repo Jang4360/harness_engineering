@@ -6,6 +6,7 @@ Work is done only when:
 - Structured progress and metrics artifacts match the latest known state.
 - Risks and open questions are explicit.
 - Required checks ran or the blocker is recorded.
-- Review and QA outcomes were fed forward to the next stage.
+- Validation ran through `validate-change` or an equivalent explicit review-plus-QA path, and its outcomes were fed forward to the next stage.
+- The highest-risk failure or exception paths were tested or recorded as explicit accepted risk.
 - Release readiness is not inferred from passing tests alone.
 - Retrospective learnings are captured when the work exposed a recurring pattern.

@@ -2,7 +2,7 @@
 
 ## Identity
 
-- Name: Template Project
+- Name: poc_v3
 - Repository role: vendor-neutral AI harness template
 - Primary outcome: give new repositories a durable AI workflow, not just prompt snippets
 - Primary users: maintainers, builders, and teams starting AI-assisted software projects
@@ -12,7 +12,7 @@
 - Canonical workflow documentation
 - Canonical memory and evaluation artifacts
 - Canonical skills for planning, delivery, validation, release, and learning
-- Generated adapters for Claude and Codex hosts
+- Generated adapters for Claude, Codex, and future host runtimes without fixing stage ownership to one model
 
 ## What this template does not own
 
