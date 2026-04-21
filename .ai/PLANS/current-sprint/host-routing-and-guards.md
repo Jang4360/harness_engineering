@@ -35,7 +35,7 @@ Make planning, implementation, validation, and retry handling behave consistentl
 
 ## Validation Plan
 
-- [ ] Check that `deliver-change` and `validate-change` describe the intended behavior clearly.
+- [ ] Check that `start` and `check` describe the intended behavior clearly.
 - [ ] Check that dashboard or preflight surfaces the most important next action.
 
 ## Risks and Open Questions
@@ -49,6 +49,6 @@ Make planning, implementation, validation, and retry handling behave consistentl
 
 ## Handoff
 
-- Build skill: `deliver-change`
-- Validation skill: `validate-change`
+- Build skill: `start`
+- Validation skill: `check`
 - Ship readiness note: host-specific surfaces must stay subordinate to canonical `.ai/` policy

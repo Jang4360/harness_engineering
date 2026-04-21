@@ -29,7 +29,7 @@ Convert a loose product request into a reusable framing artifact that planning s
 1. Restate the request in plain language and separate problem, user, and proposed solution.
 2. Challenge ambiguity until the target user, pain, trigger moment, and narrowest useful wedge are explicit.
 3. Identify what is out of scope for this sprint.
-4. If `docs/PRD/`, `docs/ERD/`, or `docs/API/` are missing for the request, hand off to `author-specs` before relying on implementation guesses.
+4. If `docs/PRD/`, `docs/ERD/`, or `docs/API/` are missing for the request, hand off to `docs` before relying on implementation guesses.
 5. If specs exist, identify the most relevant versions and record them as planning inputs before relying on implementation guesses.
 6. Update `.ai/PLANS/current-sprint.md` with a durable problem framing section, explicit success criteria, and the first-pass workstream split.
 7. If the request is broad or still only exists as chat, prefer bootstrapping `.ai/PLANS/current-sprint.md` plus `.ai/PLANS/current-sprint/*.md` with `scripts/scaffold-plan.sh` before deeper review.
@@ -49,6 +49,6 @@ Convert a loose product request into a reusable framing artifact that planning s
 
 ## handoff rules
 
-- Hand off to `plan-ceo-review` when scope or product ambition needs pressure.
-- Hand off to `plan-eng-review` once the problem is concrete enough to design a buildable solution.
-- Hand off to `author-specs` when the repository still lacks durable PRD, ERD, or API context.
+- Hand off to `plan-ceo` when scope or product ambition needs pressure.
+- Hand off to `plan-eng` once the problem is concrete enough to design a buildable solution.
+- Hand off to `docs` when the repository still lacks durable PRD, ERD, or API context.

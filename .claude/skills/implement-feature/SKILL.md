@@ -47,4 +47,4 @@ Execute planned feature work while keeping implementation tied to durable artifa
 
 ## handoff rules
 
-- Hand off to `validate-change` once the implementation is coherent.
+- Hand off to `check` once the implementation is coherent.

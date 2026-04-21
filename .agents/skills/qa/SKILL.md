@@ -1,6 +1,6 @@
 ---
 name: qa
-description: Test real user flows as the QA step inside `validate-change`, or produce a narrow QA report when used directly.
+description: Test real user flows as the QA step inside `check`, or produce a narrow QA report when used directly.
 ---
 
 # qa
@@ -11,7 +11,7 @@ Validate that the implemented change works in the way a user experiences it, not
 
 ## when to use
 
-- Inside `validate-change` as the default user-flow check
+- Inside `check` as the default user-flow check
 - Before shipping when a separate QA pass is intentionally needed
 - When the team needs a realistic flow-level confidence check without a broader validation report
 
@@ -48,5 +48,5 @@ Validate that the implemented change works in the way a user experiences it, not
 ## handoff rules
 
 - Hand off to `ship` only after critical findings are addressed or explicitly deferred.
-- Hand off to `validate-change` when QA is one part of a broader validation pass.
+- Hand off to `check` when QA is one part of a broader validation pass.
 - Hand off to `learn` or `retro` if QA exposed a recurring failure pattern.

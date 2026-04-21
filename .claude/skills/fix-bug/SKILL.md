@@ -46,4 +46,4 @@ Resolve defects without treating the first apparent symptom as the root cause.
 
 ## handoff rules
 
-- Hand off to `validate-change` for risk checking and flow verification.
+- Hand off to `check` for risk checking and flow verification.

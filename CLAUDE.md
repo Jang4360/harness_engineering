@@ -31,8 +31,8 @@ Use this repository as a structured AI harness, not as a loose prompt sandbox.
 - Run `scripts/sync-adapters.sh` after canonical skill changes.
 - Run `scripts/update-progress.sh` after changing item statuses in `progress.json`.
 - Run `scripts/update-metrics.sh` after retry, promotion, or blocker state changes.
-- Use `deliver-change` when the request should include implementation plus validation in one pass.
-- Use `validate-change` as the default validation gate for an existing change, whether Claude validates locally or receives a handoff via `scripts/review-brief.sh`.
+- Use `start` when the request should include implementation plus validation in one pass.
+- Use `check` as the default validation gate for an existing change, whether Claude validates locally or receives a handoff via `scripts/review-brief.sh`.
 - Use `review`, `qa`, or `qa-only` directly only when a narrower one-stage report is explicitly what the user wants.
 - Treat `scripts/record-retry.sh` as the default retry logger. It now auto-checks the circuit breaker and should trigger a `learn` handoff when it exits with an open circuit.
 - Use `scripts/smoke.sh` after project-specific commands are configured.

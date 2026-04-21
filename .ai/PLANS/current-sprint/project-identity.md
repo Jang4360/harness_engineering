@@ -48,6 +48,6 @@ Replace template identity and framing with real project context so later plannin
 
 ## Handoff
 
-- Build skill: `deliver-change`
-- Validation skill: `validate-change`
+- Build skill: `start`
+- Validation skill: `check`
 - Ship readiness note: identity docs must be internally consistent before later sprint work depends on them

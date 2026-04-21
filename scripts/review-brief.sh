@@ -82,6 +82,6 @@ if blocked:
 print("")
 print("Validation request")
 print("- Focus on correctness, maintainability, edge cases, missing tests, and production risk")
-print("- Run the review skill and the appropriate QA path, or use validate-change as the orchestration entrypoint")
+print("- Run the review skill and the appropriate QA path, or use check as the orchestration entrypoint")
 print("- Same-host validation is acceptable; this brief exists only when another host is taking over")
 PY

@@ -346,8 +346,8 @@ def build_setup_workstream() -> str:
             "",
             "## Handoff",
             "",
-            "- Build skill: `deliver-change`",
-            "- Validation skill: `validate-change`",
+            "- Build skill: `start`",
+            "- Validation skill: `check`",
             "- Ship readiness note: `core app setup and runnable commands must exist before feature work is called ready`",
             "",
         ]
@@ -470,8 +470,8 @@ for workstream in workstreams:
             "",
             "## Handoff",
             "",
-            "- Build skill: `deliver-change`",
-            "- Validation skill: `validate-change`",
+            "- Build skill: `start`",
+            "- Validation skill: `check`",
             "- Ship readiness note: `TODO: what must be true before ship`",
             "",
         ]

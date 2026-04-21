@@ -14,7 +14,7 @@ Make the repository smarter over time by capturing what repeats.
 - After retro
 - After recurring bugs, review findings, QA failures, or operational surprises
 - When a new convention or policy should persist
-- When `scripts/record-retry.sh` opens the circuit breaker during an active `deliver-change` or `validate-change` pass — run immediately in the same session, not as a deferred follow-up
+- When `scripts/record-retry.sh` opens the circuit breaker during an active `start` or `check` pass — run immediately in the same session, not as a deferred follow-up
 - When `scripts/dashboard.sh` surfaces a circuit breaker hot cluster (>=3 repeated failures in 24h) outside an active delivery pass
 
 ## inputs

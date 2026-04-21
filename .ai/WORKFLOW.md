@@ -14,14 +14,14 @@ request or event -> classification -> doc and skill loading -> planning -> imple
 
 ### Think
 
-- Primary skills: `author-specs`, `office-hours`
+- Primary skills: `docs`, `office-hours`
 - Goal: turn vague intent into a sharper problem definition, wedge, user, and non-goals
 - Main outputs: versioned PRD, ERD, API docs when needed, plus updated framing in `.ai/PLANS/current-sprint.md`, explicit success criteria, and initial workstream boundaries
 - Handoff: planning stages inherit the clarified problem instead of the original loose request
 
 ### Plan
 
-- Primary skills: `plan-ceo-review`, `plan-eng-review`, `plan-design-review`, `plan-workstreams`, `autoplan`
+- Primary skills: `plan-ceo`, `plan-eng`, `plan-design`, `plan`, `autoplan`
 - Goal: challenge scope, architecture, interaction quality, failure modes, trust boundaries, and test strategy before implementation
 - Main outputs: reusable checklist-based sprint index sections in `.ai/PLANS/current-sprint.md`, workstream subplans under `.ai/PLANS/current-sprint/`, optional ADR drafts, backlog or roadmap deltas
 - Planning helpers: `scripts/scaffold-specs.sh` can bootstrap versioned docs under `docs/PRD`, `docs/ERD`, and `docs/API`, and `scripts/scaffold-plan.sh` can bootstrap or refresh the sprint index and workstream files from those docs plus `.ai/DECISIONS/`
@@ -29,28 +29,28 @@ request or event -> classification -> doc and skill loading -> planning -> imple
 
 ### Build
 
-- Primary skills: `deliver-change`, `implement-feature`, `fix-bug`, `refactor-module`, `write-test`, `investigate`
+- Primary skills: `start`, `implement-feature`, `fix-bug`, `refactor-module`, `write-test`, `investigate`
 - Goal: execute against an approved plan with clear boundaries and evidence
 - Main outputs: code changes, happy-path plus failure-path tests, and implementation notes recorded in sprint artifacts when behavior or scope changed
-- Handoff: `deliver-change` continues directly into validation; pure build skills hand off to `validate-change` so review inherits the approved plan, not just the diff
+- Handoff: `start` continues directly into validation; pure build skills hand off to `check` so review inherits the approved plan, not just the diff
 
 ### Review
 
-- Primary skills: `validate-change`, `design-review`, `security-review`
+- Primary skills: `check`, `design-review`, `security-review`
 - Goal: inspect correctness, maintainability, product integrity, and risk
 - Main outputs: findings, resolved risks, open questions, and review notes linked from `.ai/PLANS/current-sprint.md`
-- Handoff: `validate-change` is the default validation entrypoint and aggregates code review findings plus downstream QA and release risks
+- Handoff: `check` is the default validation entrypoint and aggregates code review findings plus downstream QA and release risks
 
 ### Test
 
-- Primary skills: `validate-change`, `benchmark`
+- Primary skills: `check`, `benchmark`
 - Goal: verify real user flows, failure cases, and performance expectations
 - Main outputs: bug and risk reports, tested exception-path notes, smoke-check references, scorecard updates, regression notes
-- Handoff: ship consumes readiness status from `validate-change`, QA, and benchmarks rather than assuming tests passed means production-ready
+- Handoff: ship consumes readiness status from `check`, QA, and benchmarks rather than assuming tests passed means production-ready
 
 ## Validation rule
 
-- Default validation command: `validate-change`
+- Default validation command: `check`
 - Supporting validation sub-skills: `review`, `qa`, `qa-only`, `design-review`, `security-review`, `benchmark`
 - Use supporting validation skills directly only when a narrower report is more useful than the combined validation gate
 

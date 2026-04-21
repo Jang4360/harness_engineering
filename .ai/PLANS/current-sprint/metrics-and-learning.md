@@ -49,6 +49,6 @@ Make success, failure, and repeated patterns visible enough that the harness can
 
 ## Handoff
 
-- Build skill: `deliver-change`
-- Validation skill: `validate-change`
+- Build skill: `start`
+- Validation skill: `check`
 - Ship readiness note: success criteria and failure visibility must be credible before trusting the harness dashboard

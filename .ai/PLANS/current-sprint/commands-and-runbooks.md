@@ -49,6 +49,6 @@ Replace template placeholders for smoke, release, and rollback with real project
 
 ## Handoff
 
-- Build skill: `deliver-change`
-- Validation skill: `validate-change`
+- Build skill: `start`
+- Validation skill: `check`
 - Ship readiness note: smoke, release, and rollback commands must be defined before calling the harness operational

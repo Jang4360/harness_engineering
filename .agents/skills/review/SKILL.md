@@ -1,6 +1,6 @@
 ---
 name: review
-description: Produce a narrow code-review report or act as the code-review step inside `validate-change`.
+description: Produce a narrow code-review report or act as the code-review step inside `check`.
 ---
 
 # review
@@ -11,7 +11,7 @@ Inspect the branch like a strong human reviewer would, with emphasis on what hap
 
 ## when to use
 
-- Inside `validate-change` as the code-review step
+- Inside `check` as the code-review step
 - When a narrow code-review-only report is intentionally preferred
 - When a risky change needs a hard correctness pass without a full validation gate
 
@@ -46,5 +46,5 @@ Inspect the branch like a strong human reviewer would, with emphasis on what hap
 
 ## handoff rules
 
-- Hand off to `validate-change` when the change still needs the combined validation gate.
+- Hand off to `check` when the change still needs the combined validation gate.
 - Hand off to `ship` only after high-risk findings are resolved or explicitly accepted.

@@ -43,4 +43,4 @@ Make a code area easier to maintain without changing product behavior.
 
 ## handoff rules
 
-- Hand off to `validate-change` for maintainability and regression risk inspection.
+- Hand off to `check` for maintainability and regression risk inspection.

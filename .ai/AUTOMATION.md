@@ -22,13 +22,13 @@ The following steps run without manual intervention when hooks are wired:
 
 ## What requires human or agent action
 
-- **Validation routing**: Use `validate-change` as the default validation gate. It runs code review plus flow verification in the same host, or generates a handoff via `scripts/review-brief.sh` when another host should validate. The validation pass should include a compact exception-path matrix, not just the happy path.
+- **Validation routing**: Use `check` as the default validation gate. It runs code review plus flow verification in the same host, or generates a handoff via `scripts/review-brief.sh` when another host should validate. The validation pass should include a compact exception-path matrix, not just the happy path.
 - **Circuit breaker preflight**: `scripts/check-circuit-breaker.sh` remains available when an external workflow wants to inspect a failure signature before retrying.
 - **Learn continuation**: When `scripts/record-retry.sh` opens the circuit breaker, the harness should stop brute-force retries and continue into `learn` instead of asking the user to remember the escalation path.
 - **Promotion**: Call `scripts/record-promotion.sh` when a pattern is ready to be promoted. Invoke the `learn` skill to choose the right destination. This also refreshes derived metrics.
 - **Scoring**: Call `scripts/score.sh` to get a readiness snapshot. Update `.ai/EVALS/metrics.json` after real sprint usage.
 - **Dashboard**: Call `scripts/dashboard.sh` to surface progress, blocked work, quality metrics, and retry clusters.
-- **Review handoff**: Cross-host validation should flow through `validate-change`, which generates `scripts/review-brief.sh` output when needed. Same-host validation should not require a handoff script.
+- **Review handoff**: Cross-host validation should flow through `check`, which generates `scripts/review-brief.sh` output when needed. Same-host validation should not require a handoff script.
 
 ## Static versus automated
 

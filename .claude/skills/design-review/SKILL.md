@@ -17,7 +17,7 @@ Audit the live or implemented interface after build, not just the plan.
 ## inputs
 
 - Implemented interface or screenshots
-- `plan-design-review` notes in the sprint artifact
+- `plan-design` notes in the sprint artifact
 - `.ai/MEMORY/conventions.md` if visual principles exist
 
 ## procedure

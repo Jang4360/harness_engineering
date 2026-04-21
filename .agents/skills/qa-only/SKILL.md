@@ -11,7 +11,7 @@ Provide an independent QA report without mixing testing and implementation in th
 
 ## when to use
 
-- Inside `validate-change` when an independent QA report is needed
+- Inside `check` when an independent QA report is needed
 - When a pure test report is preferred
 - When code changes are blocked or should be separated from validation
 

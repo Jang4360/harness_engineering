@@ -66,9 +66,9 @@ stage_order = list(stage_map.keys())
 stage_skill = {
     "Think": "office-hours",
     "Plan": "autoplan",
-    "Build": "deliver-change",
-    "Review": "validate-change",
-    "Test": "validate-change",
+    "Build": "start",
+    "Review": "check",
+    "Test": "check",
     "Ship": "ship",
     "Reflect": "learn",
 }

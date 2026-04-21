@@ -43,5 +43,5 @@ Strengthen confidence around a behavior, regression, or boundary.
 
 ## handoff rules
 
-- Hand off to `validate-change` when the test work is part of a broader change that still needs review or flow validation.
+- Hand off to `check` when the test work is part of a broader change that still needs review or flow validation.
 - Hand off to `review` or `qa` directly only when a narrower one-stage check is intentionally sufficient.

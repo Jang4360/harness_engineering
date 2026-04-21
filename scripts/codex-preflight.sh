@@ -77,7 +77,7 @@ print("- Before another repeated attempt: scripts/check-circuit-breaker.sh <sign
 print("")
 print("Validation Route")
 print("- Implement, review, and QA in the same host when that is the simplest credible path")
-print("- If another host should validate, use validate-change with a cross-host route; it generates the handoff brief via scripts/review-brief.sh as part of its procedure")
+print("- If another host should validate, use check with a cross-host route; it generates the handoff brief via scripts/review-brief.sh as part of its procedure")
 
 if warnings:
     print("")

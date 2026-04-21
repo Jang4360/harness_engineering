@@ -53,6 +53,6 @@
 
 ## Handoff
 
-- Build skill: `TODO: implement-feature | fix-bug | deliver-change | other`
-- Validation skill: `TODO: validate-change | qa-only | other`
+- Build skill: `TODO: implement-feature | fix-bug | start | other`
+- Validation skill: `TODO: check | qa-only | other`
 - Ship readiness note: `TODO: what must be true before ship`
