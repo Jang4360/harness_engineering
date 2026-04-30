@@ -4,7 +4,7 @@
 # Exit non-zero to block the command (stdout becomes the reason shown to Claude).
 set -euo pipefail
 
-ROOT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+ROOT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
 
 input=$(cat)
 command=$(echo "$input" | python3 -c "
@@ -20,4 +20,4 @@ if [[ -z "$command" ]]; then
   exit 0
 fi
 
-"$ROOT_DIR/scripts/check-dangerous-command.sh" "$command"
+"$ROOT_DIR/.ai/scripts/check-dangerous-command.sh" "$command"

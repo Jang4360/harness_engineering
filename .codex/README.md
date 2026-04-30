@@ -12,9 +12,7 @@ Generated from `.ai/ADAPTERS/codex/`.
 
 - `.codex/config.toml`
 - `.codex/hooks.json`
-- `scripts/codex-preflight.sh`
-- `scripts/codex-review-brief.sh`
 
 ## Rule
 
-`AGENTS.md` and `.agents/skills/` are the primary Codex-facing surfaces. `.codex/hooks.json` only triggers a minimal session-start preflight that surfaces guard commands, dashboard state, and Claude review routing. Tool-level blocking still lives in the guard scripts and host instructions unless a stable Codex hook contract proves otherwise.
+Root `AGENTS.md` plus `.agents/skills/` are the primary Codex-facing surfaces. `.codex/hooks.json` only triggers a minimal session-start preflight that surfaces canonical `.ai/scripts/` guard commands, dashboard state, and Claude review routing. Tool-level blocking still lives in the guard scripts and canonical host instructions unless a stable Codex hook contract proves otherwise.

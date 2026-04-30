@@ -3,7 +3,7 @@
 # Blocks production edits when no related test work exists yet.
 set -euo pipefail
 
-ROOT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+ROOT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
 
 input=$(cat)
 file_path=$(echo "$input" | python3 -c "
@@ -20,4 +20,4 @@ if [[ -z "$file_path" ]]; then
 fi
 
 rel_path="${file_path#$ROOT_DIR/}"
-exec "$ROOT_DIR/scripts/check-tdd-guard.sh" --mode pre "$rel_path"
+exec "$ROOT_DIR/.ai/scripts/check-tdd-guard.sh" --mode pre "$rel_path"

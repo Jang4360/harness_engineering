@@ -14,12 +14,12 @@ Make the repository smarter over time by capturing what repeats.
 - After retro
 - After recurring bugs, review findings, QA failures, or operational surprises
 - When a new convention or policy should persist
-- When `scripts/dashboard.sh` surfaces a circuit breaker hot cluster (>=3 repeated failures in 24h)
+- When `.ai/scripts/dashboard.sh` surfaces a circuit breaker hot cluster (>=3 repeated failures in 24h)
 
 ## inputs
 
 - Retro notes or failure context
-- Circuit breaker output: signature and count from `scripts/dashboard.sh` or `scripts/check-circuit-breaker.sh`
+- Circuit breaker output: signature and count from `.ai/scripts/dashboard.sh` or `.ai/scripts/check-circuit-breaker.sh`
 - Incident, debugging, and scorecard context
 - Existing memory and evaluation files
 
@@ -32,7 +32,7 @@ Make the repository smarter over time by capturing what repeats.
    - Repeated quality gap or completion ambiguity → `.ai/EVALS/failure-patterns.md` or `.ai/WORKFLOW.md`
    - Architecture-level decision → `.ai/DECISIONS/` as an ADR
 3. Update the chosen artifact with concise, reusable guidance.
-4. Call `scripts/record-promotion.sh <destination> <reason> <artifact>` to log the event.
+4. Call `.ai/scripts/record-promotion.sh <destination> <reason> <artifact>` to log the event.
 5. If the workflow itself should change, note the required skill or runbook update.
 
 ## outputs

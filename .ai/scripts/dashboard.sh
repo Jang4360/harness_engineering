@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-"$ROOT_DIR/scripts/update-progress.sh" >/dev/null
-"$ROOT_DIR/scripts/update-metrics.sh" >/dev/null
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+"$ROOT_DIR/.ai/scripts/update-progress.sh" >/dev/null
+"$ROOT_DIR/.ai/scripts/update-metrics.sh" >/dev/null
 
 python3 - <<'PY' "$ROOT_DIR"
 import json

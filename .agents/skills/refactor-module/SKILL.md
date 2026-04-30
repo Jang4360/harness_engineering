@@ -24,9 +24,9 @@ Make a code area easier to maintain without changing product behavior.
 
 1. State what pain the refactor is addressing.
 2. Identify the safe behavioral boundary that must not change.
-3. Before mutating shell state, run `scripts/check-dangerous-command.sh "<command>"`. Before editing implementation files, run `scripts/check-tdd-guard.sh --mode pre <candidate paths>`.
+3. Before mutating shell state, run `.ai/scripts/check-dangerous-command.sh "<command>"`. Before editing implementation files, run `.ai/scripts/check-tdd-guard.sh --mode pre <candidate paths>`.
 4. Refactor incrementally with tests guarding expected behavior.
-5. If the same refactor path fails repeatedly, run `scripts/record-retry.sh <signature>` and `scripts/check-circuit-breaker.sh <signature>` before retrying again.
+5. If the same refactor path fails repeatedly, run `.ai/scripts/record-retry.sh <signature>` and `.ai/scripts/check-circuit-breaker.sh <signature>` before retrying again.
 6. Update architecture notes if the resulting boundaries become clearer or different.
 7. Record notable patterns in `.ai/MEMORY/conventions.md` if reusable.
 

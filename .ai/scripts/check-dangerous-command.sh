@@ -4,7 +4,7 @@ set -euo pipefail
 COMMAND_STRING="${*:-}"
 
 if [[ -z "$COMMAND_STRING" ]]; then
-  echo "usage: scripts/check-dangerous-command.sh <command string>" >&2
+  echo "usage: .ai/scripts/check-dangerous-command.sh <command string>" >&2
   exit 1
 fi
 

@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 STATE_FILE="${RETRY_LOG_FILE:-$ROOT_DIR/.ai/EVALS/retry-log.jsonl}"
 SIGNATURE="${1:-}"
 OUTCOME="${2:-failed}"
 
 if [[ -z "$SIGNATURE" ]]; then
-  echo "usage: scripts/record-retry.sh <failure signature> [outcome]" >&2
+  echo "usage: .ai/scripts/record-retry.sh <failure signature> [outcome]" >&2
   exit 1
 fi
 
@@ -28,5 +28,5 @@ with path.open("a", encoding="utf-8") as fh:
     fh.write(json.dumps(record, ensure_ascii=True) + "\n")
 PY
 
-"$ROOT_DIR/scripts/update-metrics.sh" >/dev/null
+"$ROOT_DIR/.ai/scripts/update-metrics.sh" >/dev/null
 echo "retry recorded: $SIGNATURE"

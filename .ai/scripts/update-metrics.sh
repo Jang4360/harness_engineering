@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 PROGRESS_FILE="$ROOT_DIR/.ai/PLANS/progress.json"
 METRICS_FILE="$ROOT_DIR/.ai/EVALS/metrics.json"
 RETRY_FILE="$ROOT_DIR/.ai/EVALS/retry-log.jsonl"

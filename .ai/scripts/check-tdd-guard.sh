@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 MODE="post"
 
 collect_repo_changed_files() {
@@ -38,7 +38,7 @@ tests_changed=0
 
 for file in "${changed_files[@]}"; do
   case "$file" in
-    .ai/*|.claude/*|.agents/*|README.md|AGENTS.md|CLAUDE.md|CONTRIBUTING.md|LICENSE|scripts/*)
+    .ai/*|.claude/*|.agents/*|README.md|AGENTS.md|CLAUDE.md|CONTRIBUTING.md|LICENSE|.ai/scripts/*)
       continue
       ;;
   esac

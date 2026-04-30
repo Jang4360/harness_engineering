@@ -28,13 +28,14 @@ Produce a complete plan packet without skipping the Think or Plan stages.
 2. Run the intent of `plan-ceo-review`.
 3. Run the intent of `plan-eng-review`.
 4. Run the intent of `plan-design-review` when the work is user-facing.
-5. Consolidate the approved result in `.ai/PLANS/current-sprint.md`.
+5. Consolidate the approved result in `.ai/PLANS/current-sprint.md` or a linked plan artifact under `.ai/PLANS/`.
+6. Run `.ai/scripts/check-plan-readiness.sh` and close plan gaps that do not require external confirmation.
 
 ## outputs
 
 - Single reviewed sprint plan
 - Explicit scope, architecture, risk, and UX expectations
-- Ready-to-build artifact
+- Ready-to-build artifact with review and QA handoff sections
 
 ## escalation rules
 

@@ -10,6 +10,10 @@ The automation-oriented execution shape is:
 
 request or event -> classification -> doc and skill loading -> planning -> implementation -> evaluation -> risk summary -> promotion -> scoring -> dashboard update
 
+The harness control shape is:
+
+intent -> orchestrator selects stage -> agent loads skill -> guarded tool use -> deterministic validation -> review agent or reviewer -> QA signal -> promotion into memory, eval, skill, or ADR
+
 ## Stage contracts
 
 ### Think
@@ -23,7 +27,7 @@ request or event -> classification -> doc and skill loading -> planning -> imple
 
 - Primary skills: `plan-ceo-review`, `plan-eng-review`, `plan-design-review`, `autoplan`
 - Goal: challenge scope, architecture, interaction quality, failure modes, trust boundaries, and test strategy before implementation
-- Main outputs: reusable plan sections in `.ai/PLANS/current-sprint.md`, optional ADR drafts, backlog or roadmap deltas
+- Main outputs: reusable plan sections in `.ai/PLANS/current-sprint.md` or a linked implementation plan artifact, explicit execution units, test and validation matrix, risk register, optional ADR drafts, backlog or roadmap deltas
 - Handoff: build, review, and QA consume these artifacts directly
 
 ### Build
@@ -77,6 +81,8 @@ request or event -> classification -> doc and skill loading -> planning -> imple
 - Production edits should pass through the TDD guard before automation is allowed to treat them as ready.
 - Shell execution should pass through the dangerous command guard before automation executes high-risk commands.
 - Repeated equivalent failures should pass through the circuit breaker before more retries are attempted.
+- Newly added or changed code should pass deterministic validation before `verify` treats the harness as ready.
+- Local-only host files should be ignored and untracked, but their mere presence should not block repository verification.
 
 ## Promotion paths
 
@@ -89,3 +95,5 @@ request or event -> classification -> doc and skill loading -> planning -> imple
 ## Operating rule
 
 If a stage creates output that another stage will need later, store it in `.ai/` instead of leaving it in transient chat context.
+
+Planning is not done when it only lists gaps. Planning is done when executable tasks, measurable done criteria, validation work, and unresolved external blockers are separated into durable artifacts.

@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 SOURCE_DIR="$ROOT_DIR/.ai/SKILLS"
 ADAPTERS_DIR="$ROOT_DIR/.ai/ADAPTERS"
 CLAUDE_DIR="$ROOT_DIR/.claude/skills"
@@ -50,4 +50,5 @@ cp "$ADAPTERS_DIR/codex/config.toml" "$ROOT_DIR/.codex/config.toml"
 cp "$ADAPTERS_DIR/codex/hooks.json" "$ROOT_DIR/.codex/hooks.json"
 cp "$ADAPTERS_DIR/codex/README.md" "$ROOT_DIR/.codex/README.md"
 
-echo "synced ${#SKILL_DIRS[@]} canonical skills and adapter files into .claude, .agents, and .codex"
+echo "synced ${#SKILL_DIRS[@]} canonical skills and runtime adapters from .ai/"
+echo "note: root AGENTS.md and CLAUDE.md are installed separately via .ai/scripts/install-root-entrypoints.sh"

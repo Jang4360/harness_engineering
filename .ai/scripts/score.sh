@@ -1,11 +1,12 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-"$ROOT_DIR/scripts/update-progress.sh" >/dev/null
-"$ROOT_DIR/scripts/update-metrics.sh" >/dev/null
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+"$ROOT_DIR/.ai/scripts/update-progress.sh" >/dev/null
+"$ROOT_DIR/.ai/scripts/update-metrics.sh" >/dev/null
 python3 - <<'PY' "$ROOT_DIR"
 import json
+import subprocess
 import sys
 from pathlib import Path
 
@@ -13,18 +14,18 @@ root = Path(sys.argv[1])
 score = 0
 max_score = 17
 
+
 def emit(points, earned, label, message):
     print(f"[{earned}/{points}] {label}: {message}")
 
-verify_ok = (root / "scripts" / "verify.sh").exists()
-if verify_ok:
-    import subprocess
-    result = subprocess.run([str(root / "scripts" / "verify.sh")], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+verify_script = root / ".ai" / "scripts" / "verify.sh"
+if verify_script.exists():
+    result = subprocess.run([str(verify_script)], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
     if result.returncode == 0:
         score += 2
         emit(2, 2, "structure", "canonical files, json artifacts, and adapters verify")
     else:
-        emit(2, 0, "structure", "run scripts/verify.sh and fix the reported issues")
+        emit(2, 0, "structure", "run .ai/scripts/verify.sh and fix the reported issues")
 
 project_md = (root / ".ai" / "PROJECT.md").read_text(encoding="utf-8")
 if "Template Project" not in project_md:
@@ -41,12 +42,12 @@ for runbook in ["local-setup.md", "release.md", "rollback.md"]:
 score += runbook_points
 emit(3, runbook_points, "runbooks", "project-specific commands documented")
 
-smoke_text = (root / "scripts" / "smoke.sh").read_text(encoding="utf-8")
+smoke_text = (root / ".ai" / "scripts" / "smoke.sh").read_text(encoding="utf-8")
 if "TODO(project)" not in smoke_text:
     score += 1
     emit(1, 1, "smoke", "placeholder smoke command was replaced")
 else:
-    emit(1, 0, "smoke", "replace the project-specific placeholder in scripts/smoke.sh or use HARNESS_SMOKE_COMMAND")
+    emit(1, 0, "smoke", "replace the project-specific placeholder in .ai/scripts/smoke.sh or use HARNESS_SMOKE_COMMAND")
 
 hooks_text = (root / ".codex" / "hooks.json").read_text(encoding="utf-8")
 if '"SessionStart"' in hooks_text:

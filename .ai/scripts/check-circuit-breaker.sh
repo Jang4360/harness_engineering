@@ -1,14 +1,14 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 STATE_FILE="${CIRCUIT_BREAKER_STATE_FILE:-$ROOT_DIR/.ai/EVALS/retry-log.jsonl}"
 SIGNATURE="${1:-}"
 WINDOW_MINUTES="${CIRCUIT_BREAKER_WINDOW_MINUTES:-30}"
 THRESHOLD="${CIRCUIT_BREAKER_THRESHOLD:-3}"
 
 if [[ -z "$SIGNATURE" ]]; then
-  echo "usage: scripts/check-circuit-breaker.sh <failure signature>" >&2
+  echo "usage: .ai/scripts/check-circuit-breaker.sh <failure signature>" >&2
   exit 1
 fi
 

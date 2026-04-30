@@ -18,12 +18,13 @@ Validate that the implemented change works in the way a user experiences it, not
 ## inputs
 
 - Current change and plan context
+- Any test and validation matrix produced by planning
 - `.ai/EVALS/smoke-checklist.md`
 - Review findings and open risks
 
 ## procedure
 
-1. Identify the real flows most likely to matter for the release.
+1. Start from the plan artifact's test and validation matrix instead of inventing QA scope from scratch.
 2. Execute the flows and note failures, confusing states, and hidden operational risks.
 3. Produce a bug and risk report in `.ai/PLANS/current-sprint.md`.
 4. Update `.ai/EVALS/scorecard.md` if the test outcome changes release readiness.

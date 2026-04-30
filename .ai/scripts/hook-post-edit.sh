@@ -4,7 +4,7 @@
 # Exit non-zero to surface a warning to Claude (action already happened; cannot block).
 set -euo pipefail
 
-ROOT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)}"
+ROOT_DIR="${CLAUDE_PROJECT_DIR:-$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)}"
 
 input=$(cat)
 file_path=$(echo "$input" | python3 -c "
@@ -23,4 +23,4 @@ fi
 # Make path relative to project root for the guard
 rel_path="${file_path#$ROOT_DIR/}"
 
-exec "$ROOT_DIR/scripts/check-tdd-guard.sh" "$rel_path"
+exec "$ROOT_DIR/.ai/scripts/check-tdd-guard.sh" "$rel_path"

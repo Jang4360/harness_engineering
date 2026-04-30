@@ -1,9 +1,9 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
-"$ROOT_DIR/scripts/update-progress.sh" >/dev/null
-"$ROOT_DIR/scripts/update-metrics.sh" >/dev/null
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
+"$ROOT_DIR/.ai/scripts/update-progress.sh" >/dev/null
+"$ROOT_DIR/.ai/scripts/update-metrics.sh" >/dev/null
 
 python3 - <<'PY' "$ROOT_DIR"
 import json
@@ -16,7 +16,7 @@ root = Path(sys.argv[1])
 progress = json.loads((root / ".ai" / "PLANS" / "progress.json").read_text(encoding="utf-8"))
 metrics = json.loads((root / ".ai" / "EVALS" / "metrics.json").read_text(encoding="utf-8"))
 project_md = (root / ".ai" / "PROJECT.md").read_text(encoding="utf-8")
-smoke_sh = (root / "scripts" / "smoke.sh").read_text(encoding="utf-8")
+smoke_sh = (root / ".ai" / "scripts" / "smoke.sh").read_text(encoding="utf-8")
 retry_log = root / ".ai" / "EVALS" / "retry-log.jsonl"
 
 items = progress.get("items", [])
@@ -69,15 +69,16 @@ print(f"- Harness health: {metrics.get('harness_health_score')}")
 
 print("")
 print("Guard Commands")
-print('- Before shell mutations: scripts/check-dangerous-command.sh "<command>"')
-print("- Before implementation edits: scripts/check-tdd-guard.sh --mode pre <paths>")
-print("- After failed attempts: scripts/record-retry.sh <signature>")
-print("- Before another repeated attempt: scripts/check-circuit-breaker.sh <signature>")
+print('- Before shell mutations: .ai/scripts/check-dangerous-command.sh "<command>"')
+print("- Before implementation edits: .ai/scripts/check-tdd-guard.sh --mode pre <paths>")
+print("- After failed attempts: .ai/scripts/record-retry.sh <signature>")
+print("- Before another repeated attempt: .ai/scripts/check-circuit-breaker.sh <signature>")
 
 print("")
 print("Review Route")
+print("- Install root entrypoints with .ai/scripts/install-root-entrypoints.sh if AGENTS.md is missing")
 print("- Implement in Codex with AGENTS.md and .agents/skills/")
-print("- Hand off review with scripts/codex-review-brief.sh and then use Claude review flow")
+print("- Hand off review with .ai/scripts/codex-review-brief.sh and then use Claude review flow")
 
 if warnings:
     print("")

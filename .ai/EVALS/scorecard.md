@@ -2,7 +2,7 @@
 
 ## Purpose
 
-Use this file with `scripts/score.sh` to judge whether a cloned repository has moved from template state to project-ready state.
+Use this file with `.ai/scripts/score.sh` to judge whether a cloned repository has moved from template state to project-ready state.
 
 ## Readiness lenses
 

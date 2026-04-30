@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 STATE_FILE="${PROMOTION_LOG_FILE:-$ROOT_DIR/.ai/EVALS/promotion-log.jsonl}"
 DESTINATION="${1:-}"
 REASON="${2:-}"
@@ -9,7 +9,7 @@ ARTIFACT="${3:-}"
 SOURCE="${4:-manual}"
 
 if [[ -z "$DESTINATION" || -z "$REASON" || -z "$ARTIFACT" ]]; then
-  echo "usage: scripts/record-promotion.sh <destination> <reason> <artifact> [source]" >&2
+  echo "usage: .ai/scripts/record-promotion.sh <destination> <reason> <artifact> [source]" >&2
   exit 1
 fi
 
@@ -32,5 +32,5 @@ with path.open("a", encoding="utf-8") as fh:
     fh.write(json.dumps(record, ensure_ascii=True) + "\n")
 PY
 
-"$ROOT_DIR/scripts/update-metrics.sh" >/dev/null
+"$ROOT_DIR/.ai/scripts/update-metrics.sh" >/dev/null
 echo "promotion recorded: $DESTINATION -> $ARTIFACT"

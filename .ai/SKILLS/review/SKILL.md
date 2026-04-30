@@ -18,8 +18,9 @@ Inspect the branch like a strong human reviewer would, with emphasis on what hap
 ## inputs
 
 - Current diff or changed files
-- Optional runtime-generated review handoff such as `scripts/codex-review-brief.sh`
+- Optional runtime-generated review handoff such as `.ai/scripts/codex-review-brief.sh`
 - `.ai/PLANS/current-sprint.md`
+- Any linked implementation plan artifact under `.ai/PLANS/`
 - Relevant tests, architecture notes, and incidents
 
 ## procedure

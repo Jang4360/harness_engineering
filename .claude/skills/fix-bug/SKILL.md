@@ -24,10 +24,10 @@ Resolve defects without treating the first apparent symptom as the root cause.
 
 1. Reproduce the bug or define the strongest available reproduction path.
 2. Confirm the root cause instead of patching the nearest symptom.
-3. Before mutating shell state, run `scripts/check-dangerous-command.sh "<command>"`. Before editing implementation files, run `scripts/check-tdd-guard.sh --mode pre <candidate paths>`.
+3. Before mutating shell state, run `.ai/scripts/check-dangerous-command.sh "<command>"`. Before editing implementation files, run `.ai/scripts/check-tdd-guard.sh --mode pre <candidate paths>`.
 4. Apply the smallest safe fix that addresses the actual failure.
 5. Add regression coverage.
-6. If the same fix path fails repeatedly, run `scripts/record-retry.sh <signature>` and `scripts/check-circuit-breaker.sh <signature>` before retrying again.
+6. If the same fix path fails repeatedly, run `.ai/scripts/record-retry.sh <signature>` and `.ai/scripts/check-circuit-breaker.sh <signature>` before retrying again.
 7. If the bug exposed a reusable lesson, update `.ai/MEMORY/debugging.md` or `.ai/MEMORY/incidents.md`.
 
 ## outputs

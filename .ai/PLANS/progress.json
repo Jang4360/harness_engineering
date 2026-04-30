@@ -1,14 +1,14 @@
 {
   "sprint_name": "template-adoption",
-  "updated_at": "2026-04-19",
+  "updated_at": "2026-04-26",
   "summary": {
-    "planned": 5,
-    "completed": 0,
+    "planned": 6,
+    "completed": 1,
     "in_progress": 0,
     "blocked": 0,
-    "progress_percentage": 0.0,
-    "quality_adjusted_progress": 0.0,
-    "confidence_score": 1.0
+    "progress_percentage": 16.7,
+    "quality_adjusted_progress": 15.9,
+    "confidence_score": 0.95
   },
   "items": [
     {
@@ -45,6 +45,13 @@
       "status": "pending",
       "stage": "Reflect",
       "verification": "Promote at least one real pattern into MEMORY, EVAL, SKILL, or ADR"
+    },
+    {
+      "id": "HARNESS-6",
+      "title": "Harden verification gates and local-only file policy",
+      "status": "completed",
+      "stage": "Test",
+      "verification": "Run .ai/scripts/check-code-validation.sh and .ai/scripts/verify.sh"
     }
   ]
 }

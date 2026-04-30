@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+ROOT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 required_files=(
   "README.md"
@@ -10,6 +10,9 @@ required_files=(
   "LICENSE"
   "CONTRIBUTING.md"
   ".gitignore"
+  ".ai/README.md"
+  ".ai/AGENTS.md"
+  ".ai/CLAUDE.md"
   ".ai/PROJECT.md"
   ".ai/ARCHITECTURE.md"
   ".ai/WORKFLOW.md"
@@ -31,6 +34,7 @@ required_files=(
   ".ai/PLANS/roadmap.md"
   ".ai/PLANS/backlog.md"
   ".ai/PLANS/current-sprint.md"
+  ".ai/PLANS/implementation-plan-template.md"
   ".ai/PLANS/progress.json"
   ".ai/EVALS/done-criteria.md"
   ".ai/EVALS/smoke-checklist.md"
@@ -42,26 +46,29 @@ required_files=(
   ".ai/RUNBOOKS/local-setup.md"
   ".ai/RUNBOOKS/release.md"
   ".ai/RUNBOOKS/rollback.md"
-  "scripts/sync-adapters.sh"
-  "scripts/verify.sh"
-  "scripts/smoke.sh"
-  "scripts/score.sh"
-  "scripts/dashboard.sh"
-  "scripts/check-tdd-guard.sh"
-  "scripts/check-dangerous-command.sh"
-  "scripts/check-circuit-breaker.sh"
-  "scripts/codex-hook-session-start.sh"
-  "scripts/codex-preflight.sh"
-  "scripts/codex-review-brief.sh"
-  "scripts/hook-pre-edit.sh"
-  "scripts/record-retry.sh"
-  "scripts/record-promotion.sh"
-  "scripts/bootstrap-template.sh"
-  "scripts/update-progress.sh"
-  "scripts/update-metrics.sh"
-  "scripts/pipeline-check.sh"
-  "scripts/hook-pre-bash.sh"
-  "scripts/hook-post-edit.sh"
+  ".ai/scripts/install-root-entrypoints.sh"
+  ".ai/scripts/sync-adapters.sh"
+  ".ai/scripts/verify.sh"
+  ".ai/scripts/smoke.sh"
+  ".ai/scripts/score.sh"
+  ".ai/scripts/dashboard.sh"
+  ".ai/scripts/check-tdd-guard.sh"
+  ".ai/scripts/check-dangerous-command.sh"
+  ".ai/scripts/check-circuit-breaker.sh"
+  ".ai/scripts/check-code-validation.sh"
+  ".ai/scripts/check-plan-readiness.sh"
+  ".ai/scripts/codex-hook-session-start.sh"
+  ".ai/scripts/codex-preflight.sh"
+  ".ai/scripts/codex-review-brief.sh"
+  ".ai/scripts/hook-pre-edit.sh"
+  ".ai/scripts/record-retry.sh"
+  ".ai/scripts/record-promotion.sh"
+  ".ai/scripts/bootstrap-template.sh"
+  ".ai/scripts/update-progress.sh"
+  ".ai/scripts/update-metrics.sh"
+  ".ai/scripts/pipeline-check.sh"
+  ".ai/scripts/hook-pre-bash.sh"
+  ".ai/scripts/hook-post-edit.sh"
   ".claude/settings.json"
   ".claude/README.md"
   ".agents/README.md"
@@ -114,26 +121,29 @@ for file in "${required_files[@]}"; do
 done
 
 required_executables=(
-  "scripts/sync-adapters.sh"
-  "scripts/verify.sh"
-  "scripts/smoke.sh"
-  "scripts/score.sh"
-  "scripts/dashboard.sh"
-  "scripts/check-tdd-guard.sh"
-  "scripts/check-dangerous-command.sh"
-  "scripts/check-circuit-breaker.sh"
-  "scripts/codex-hook-session-start.sh"
-  "scripts/codex-preflight.sh"
-  "scripts/codex-review-brief.sh"
-  "scripts/hook-pre-edit.sh"
-  "scripts/record-retry.sh"
-  "scripts/record-promotion.sh"
-  "scripts/bootstrap-template.sh"
-  "scripts/update-progress.sh"
-  "scripts/update-metrics.sh"
-  "scripts/pipeline-check.sh"
-  "scripts/hook-pre-bash.sh"
-  "scripts/hook-post-edit.sh"
+  ".ai/scripts/install-root-entrypoints.sh"
+  ".ai/scripts/sync-adapters.sh"
+  ".ai/scripts/verify.sh"
+  ".ai/scripts/smoke.sh"
+  ".ai/scripts/score.sh"
+  ".ai/scripts/dashboard.sh"
+  ".ai/scripts/check-tdd-guard.sh"
+  ".ai/scripts/check-dangerous-command.sh"
+  ".ai/scripts/check-circuit-breaker.sh"
+  ".ai/scripts/check-code-validation.sh"
+  ".ai/scripts/check-plan-readiness.sh"
+  ".ai/scripts/codex-hook-session-start.sh"
+  ".ai/scripts/codex-preflight.sh"
+  ".ai/scripts/codex-review-brief.sh"
+  ".ai/scripts/hook-pre-edit.sh"
+  ".ai/scripts/record-retry.sh"
+  ".ai/scripts/record-promotion.sh"
+  ".ai/scripts/bootstrap-template.sh"
+  ".ai/scripts/update-progress.sh"
+  ".ai/scripts/update-metrics.sh"
+  ".ai/scripts/pipeline-check.sh"
+  ".ai/scripts/hook-pre-bash.sh"
+  ".ai/scripts/hook-post-edit.sh"
 )
 
 for file in "${required_executables[@]}"; do
@@ -191,6 +201,8 @@ for skill in "${required_skills[@]}"; do
   fi
 done
 
+"$ROOT_DIR/.ai/scripts/check-code-validation.sh"
+
 if ! python3 - <<'PY' "$ROOT_DIR/.ai/PLANS/progress.json" "$ROOT_DIR/.ai/EVALS/metrics.json" "$ROOT_DIR/.ai/ADAPTERS/claude/settings.json" "$ROOT_DIR/.ai/ADAPTERS/codex/hooks.json" "$ROOT_DIR/.claude/settings.json" "$ROOT_DIR/.codex/hooks.json"
 import json
 import sys
@@ -204,13 +216,18 @@ then
   exit 1
 fi
 
-if [[ -f "$ROOT_DIR/.claude/settings.local.json" ]]; then
-  echo ".claude/settings.local.json should remain local-only and not be committed" >&2
+if git -C "$ROOT_DIR" ls-files --error-unmatch .claude/settings.local.json >/dev/null 2>&1; then
+  echo ".claude/settings.local.json must remain local-only and must not be tracked" >&2
   exit 1
 fi
 
 if ! grep -q '^\.claude/settings\.local\.json$' "$ROOT_DIR/.gitignore"; then
   echo ".gitignore should ignore .claude/settings.local.json" >&2
+  exit 1
+fi
+
+if [[ -f "$ROOT_DIR/.claude/settings.local.json" ]] && ! git -C "$ROOT_DIR" check-ignore -q .claude/settings.local.json; then
+  echo ".claude/settings.local.json exists but is not ignored by git" >&2
   exit 1
 fi
 
